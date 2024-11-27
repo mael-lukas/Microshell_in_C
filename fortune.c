@@ -7,7 +7,7 @@
 #define BUFSIZE 128
 
 int main() {
-    char buf[BUFSIZE] = "Bienvenue dans le Shell ENSEA.\nPour quitter, tapez 'exit'.\nenseash % ";
+    char buf[BUFSIZE] = "Today is what happened to yesterday\n";
     ssize_t ret;
 
     ret = write(STDOUT_FILENO,buf,BUFSIZE);
