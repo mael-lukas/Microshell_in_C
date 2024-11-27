@@ -5,25 +5,27 @@
 #include <stdlib.h>
 #include <sys/wait.h>
 
-#define BUFSIZE 128
+#define MAXBUFSIZE 128
+#define welcome_message "Welcome to ENSEA Tiny Shell.\nType 'exit' to quit.\n"
 #define enseash_prompt "enseash % "
 
 int main() {
     int status;
     ssize_t ret;
     pid_t pid;
-    char input[BUFSIZE];
+    char input[MAXBUFSIZE];
+
     while(1) {
-        ret = read(STDIN_FILENO,input,BUFSIZE);
-        input[ret-1] = '\0';
+        ret = read(STDIN_FILENO,input,MAXBUFSIZE);
+        input[ret-1] = '\0'; // remove the last character (the backspace) and replace it with end of string symbol
 
-        pid = fork();  
+        pid = fork();
 
-        if(pid == 0) {
-            execl(input,input,NULL);
+        if(pid == 0) { // child process executes command then exit
+            execlp(input,input,NULL);
             exit(EXIT_FAILURE);
         }
-        else {
+        else { // father process wait for child to finish and give back control to user
             wait(&status);
             write(STDOUT_FILENO,enseash_prompt,strlen(enseash_prompt));
         }
