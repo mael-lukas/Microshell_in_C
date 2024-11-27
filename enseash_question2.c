@@ -15,6 +15,9 @@ int main() {
     pid_t pid;
     char input[MAXBUFSIZE];
 
+    write(STDOUT_FILENO,welcome_message,strlen(welcome_message));
+    write(STDOUT_FILENO,enseash_prompt,strlen(enseash_prompt));
+
     while(1) {
         ret = read(STDIN_FILENO,input,MAXBUFSIZE);
         input[ret-1] = '\0'; // remove the last character (the backspace) and replace it with end of string symbol
