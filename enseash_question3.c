@@ -14,18 +14,21 @@ int main() {
     ssize_t ret;
     pid_t pid;
     char input[BUFSIZE];
+
     while(1) {
         ret = read(STDIN_FILENO,input,BUFSIZE);
         input[ret-1] = '\0';
-        if((strncmp(input,"exit",5) == 0)) {
+
+        if((strncmp(input,"exit",5) == 0) || ret == 0){
             write(STDOUT_FILENO,enseash_exit_message,11);
             exit(EXIT_SUCCESS);
         }
+
         else {
             pid = fork();  
 
             if(pid == 0) {
-                execl(input,input,NULL);
+                execlp(input,input,NULL);
                 exit(EXIT_FAILURE);
             }
             else {
@@ -33,6 +36,7 @@ int main() {
                 write(STDOUT_FILENO,enseash_prompt,strlen(enseash_prompt));
             }
         }
+
     }
     return 0;
 }
