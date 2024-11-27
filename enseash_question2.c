@@ -14,7 +14,7 @@ int main() {
     pid_t pid;
     char input[BUFSIZE];
     while(1) {
-         ret = read(STDIN_FILENO,input,BUFSIZE);
+        ret = read(STDIN_FILENO,input,BUFSIZE);
         input[ret-1] = '\0';
 
         pid = fork();  
