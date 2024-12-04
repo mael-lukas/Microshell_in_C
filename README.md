@@ -20,7 +20,6 @@ Maël LUKAS: mael.lukas@ensea.fr<br>
 ├── enseashUtils.c
 ├── enseashUtils.h
 └── README.md
-
 ```
 
 **enseash_question1.c**: Display a welwome message, followed by a simple prompte.  
