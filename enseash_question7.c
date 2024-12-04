@@ -1,22 +1,4 @@
-#include <string.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/wait.h>
-#include <time.h>
-#include <fcntl.h>
-
-#define MAXBUFSIZE 128
-#define enseash_prompt "enseash % "
-#define welcome_message "Welcome to ENSEA Tiny Shell.\nType 'exit' to quit.\n"
-#define enseash_exit_message "Bye bye ...\n"
-#define exit_time_string "[exit:%d|%dms] "
-#define signal_time_string "[sign:%d|%dms] "
-#define NO_REDIRECTION 0
-#define REDIRECT_OUTPUT 1
-#define REDIRECT_INPUT 2
-
+#include "enseashUtils.h"
 
 int main() {
     int status;
@@ -39,19 +21,11 @@ int main() {
         clock_gettime(CLOCK_REALTIME,&startTime);
 
         if((strncmp(input,"exit",4) == 0) || ret == 0){ // if ctrl+d is pressed, reading process is stopped and ret is thus 0 (empty string size)
-            write(STDOUT_FILENO,enseash_exit_message,11);
+            write(STDOUT_FILENO,enseash_exit_message,strlen(enseash_exit_message));
             exit(EXIT_SUCCESS);
         }
 
-        // split input along the " " to separate command and arguments, put everything in argv
-        int i = 0;
-        char* strToken = strtok(input," "); // cut the content from input and put it in strToken until a ' ' is met
-        while (strToken != NULL && i < MAXBUFSIZE) {
-            argv[i] = strToken; // fill argv one string at a time with the command and all the arguments
-            strToken = strtok(NULL," "); // NULL to keep on splitting the same string
-            i++;
-        }
-        argv[i] = NULL; // last element for execvp needs to be NULL
+        splitInput(input,argv);
 
         int j = 0;
         while (argv[j] != NULL) {
