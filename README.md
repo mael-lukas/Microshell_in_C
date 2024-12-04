@@ -16,7 +16,8 @@ Maël LUKAS: mael.lukas@ensea.fr<br>
 ├── enseash_question3.c
 ├── enseash_question4.c
 ├── enseash_question5.c
-└── enseash_question6.c
+├── enseash_question6.c
+└── enseash_question7.c
 
 ```
 
@@ -27,3 +28,4 @@ Maël LUKAS: mael.lukas@ensea.fr<br>
 **enseash_question5.c**: Measurement of the command execution time.  
 **enseash_question6.c**: Execution of a compex command with arguments.  
 **enseash_question7.c**: Management of redirections of input and output with '<' and '>'.
+
