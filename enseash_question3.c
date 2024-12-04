@@ -1,14 +1,4 @@
-#include <string.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/wait.h>
-
-#define MAXBUFSIZE 128
-#define enseash_prompt "enseash % "
-#define welcome_message "Welcome to ENSEA Tiny Shell.\nType 'exit' to quit.\n"
-#define enseash_exit_message "Bye bye ...\n"
+#include "enseashUtils.h"
 
 int main() {
     int status;
