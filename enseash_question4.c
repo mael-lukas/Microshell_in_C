@@ -9,8 +9,8 @@
 #define enseash_prompt "enseash % "
 #define welcome_message "Welcome to ENSEA Tiny Shell.\nType 'exit' to quit.\n"
 #define enseash_exit_message "Bye bye ...\n"
-#define code_exit_string "[exit:%d]"
-#define code_signal_string "[sign:%d]"
+#define code_exit_string "[exit:%d] "
+#define signal_term_string "[sign:%d] "
 
 int main() {
     int status;
@@ -45,7 +45,7 @@ int main() {
                     write(STDOUT_FILENO,return_code,strlen(return_code));
                 }
                 else if(WIFSIGNALED(status)) {
-                    sprintf(return_code,code_signal_string,WTERMSIG(status)); // replace %d by id of signal who caused end of child
+                    sprintf(return_code,signal_term_string,WTERMSIG(status)); // replace %d by id of signal who caused end of child
                     write(STDOUT_FILENO,return_code,strlen(return_code));
                 }
         }
