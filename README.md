@@ -10,15 +10,16 @@ Maël LUKAS: mael.lukas@ensea.fr<br>
 
 ```
 .
-├── README.md
 ├── enseash_question1.c
 ├── enseash_question2.c
 ├── enseash_question3.c
 ├── enseash_question4.c
 ├── enseash_question5.c
 ├── enseash_question6.c
-└── enseash_question7.c
-
+├── enseash_question7.c
+├── enseashUtils.c
+├── enseashUtils.h
+└── README.md
 ```
 
 **enseash_question1.c**: Display a welwome message, followed by a simple prompte.  
