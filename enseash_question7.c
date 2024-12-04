@@ -62,7 +62,7 @@ int main() {
         else {
             fatherProcessRoutine2(status,startTime,stopTime);
         }
-        redirectionType = NO_REDIRECTION;
+        redirectionType = NO_REDIRECTION; // reset to NO_REDIRECTION by default for the next command input
     }
     return 0;
 }
