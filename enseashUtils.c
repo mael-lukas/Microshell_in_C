@@ -46,3 +46,26 @@ void splitInput(char* input, char** output) {
     }
     output[i] = NULL; // last element set to NULL because output will be used for execvp function
 }
+
+// searches for a redirection in the string of arguments and return the type of redirection (no, input or output)
+int setupRedirection(char** argv, int* redirectionIndex) {
+    int redirectionType = NO_REDIRECTION;
+    int j = 0;
+
+    while (argv[j] != NULL) {
+        if (strcmp(argv[j],"<") == 0) {
+            *redirectionIndex = j;
+            redirectionType = REDIRECT_INPUT;
+        }
+        if (strcmp(argv[j],">") == 0) {
+            *redirectionIndex = j;
+            redirectionType = REDIRECT_OUTPUT;
+        }
+        j++;
+    }
+
+    if (*redirectionIndex != 0) { // if there is a redirection the end of the string of arguments is before the redirection
+        argv[*redirectionIndex] = NULL;
+    }
+    return redirectionType;
+}

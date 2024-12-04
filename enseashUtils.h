@@ -25,11 +25,14 @@
 #define NO_REDIRECTION 0
 #define REDIRECT_OUTPUT 1
 #define REDIRECT_INPUT 2
+#define USR_GRP_OTH_PERM 0644
 
 void fatherProcessRoutine1(int status);
 
 void fatherProcessRoutine2(int status, struct timespec startTime, struct timespec stopTime);
 
 void splitInput(char* input, char** output);
+
+int setupRedirection(char** argv, int* redirectionIndex);
 
 #endif //ENSEASHUTILS_H
